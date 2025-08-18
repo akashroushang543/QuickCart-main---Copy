@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark theme colors */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #252525;
+  --bg-card: #0f0f0f;
+  
+  /* Neon colors */
+  --neon-blue: #00d4ff;
+  --neon-purple: #7b2cbf;
+  --neon-pink: #ff006e;
+  --neon-green: #39ff14;
+  --neon-orange: #ff9500;
+  
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted: #808080;
+  
+  /* Glow effects */
+  --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5);
+  --glow-purple: 0 0 20px rgba(123, 44, 191, 0.5);
+  --glow-pink: 0 0 20px rgba(255, 0, 110, 0.5);
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #0f0f23 100%);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Animated background particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(123, 44, 191, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+  animation: float 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-20px) rotate(1deg); }
+  66% { transform: translateY(20px) rotate(-1deg); }
+}
+
+/* Neon glow animations */
+@keyframes neon-pulse {
+  0%, 100% { 
+    box-shadow: var(--glow-blue);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes neon-flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+  75% { opacity: 0.9; }
+}
+
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor; }
+  50% { text-shadow: 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor; }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 4px;
+  box-shadow: var(--glow-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--neon-purple), var(--neon-pink));
+}
+
+@layer base {
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+/* Utility classes for neon effects */
+.neon-glow {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.neon-text {
+  animation: text-glow 3s ease-in-out infinite;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gradient-border {
+  position: relative;
+  border-radius: 8px;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+/* Hover effects */
+.hover-neon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
+  transition: all 0.3s ease;
+}
+
+/*----------------------------------------*/
+/* Base typography colors for dark theme  */
+/*----------------------------------------*/
+@layer base {
+  /* Headings should retain bright contrast */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+    font-weight: 600;
+  }
+
+  /* Paragraphs and table data use secondary for softer reading */
+  p, td {
+    color: var(--text-secondary) !important;
+    line-height: 1.6;
+  }
+  
+  /* Ensure all text elements have proper contrast */
+  body, html, div, span, li, th, tr, a {
+    color: var(--text-secondary);
+  }
+  
+  /* Override any inherited colors for better visibility */
+  .text-primary {
+    color: var(--text-primary) !important;
+  }
+  
+  .text-secondary {
+    color: var(--text-secondary) !important;
+  }
+}
