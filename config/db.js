@@ -10,19 +10,15 @@ async function connectDB() {
         return cached.conn
     }
 
-    if (cached.promise) {
+    if (!cached.promise) {
         const opts ={
             bufferCommands: false,
         }
         cached.promise = mongoose.connect(`${process.env.MONGODB_URI}/RRJ_Traders`, opts).then((mongoose) => {
             return mongoose
         })
-
-
     }
     cached.conn = await cached.promise
     return cached.conn
-
-    
 }
 export default connectDB;
