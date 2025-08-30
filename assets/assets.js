@@ -475,6 +475,9 @@ import girl_with_earphone_image from "./girl_with_earphone_image.png";
 import md_controller_image from "./md_controller_image.png";
 import sm_controller_image from "./sm_controller_image.png";
 import jbl_soundbox_image from "./jbl_soundbox_image.png";
+import poster from "./poster.gif";
+import poster2 from "./poster2.gif";
+import poster3 from "./poster3.gif";
 import boy_with_laptop_image from "./boy_with_laptop_image.png";
 import checkmark from "./checkmark.png";
 import product_details_page_apple_earphone_image1 from "./product_details_page_apple_earphone_image1.png";
@@ -528,6 +531,9 @@ export const assets = {
   md_controller_image,
   sm_controller_image,
   jbl_soundbox_image,
+  poster,
+  poster2,
+  poster3,
   boy_with_laptop_image,
   product_details_page_apple_earphone_image1,
   product_details_page_apple_earphone_image2,
