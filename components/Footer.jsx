@@ -120,7 +120,7 @@ const Footer = () => {
       <div className="relative bg-bg-primary/50 backdrop-blur-sm py-6 border-t border-neon-blue/10">
         <p className="text-center text-sm text-text-secondary/70">
           <span className="text-neon-blue animate-text-glow">Copyright 2025 ©</span>
-          <span className="text-neon-purple"> RRJ Traders Neon Edition</span>
+          <span className="text-neon-purple"> RRJ Traders </span>
           <span className="text-neon-pink"> All Rights Reserved</span>
         </p>
         <div className="flex justify-center gap-2 mt-2">
