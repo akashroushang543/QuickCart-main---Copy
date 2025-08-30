@@ -10,7 +10,7 @@ const HeaderSlider = () => {
       offer: "Limited Time Offer 30% Off",
       buttonText1: "Buy now",
       buttonText2: "Find more",
-      imgSrc: assets.header_headphone_image,
+      imgSrc: assets.headban,
     },
     {
       id: 2,
@@ -18,7 +18,8 @@ const HeaderSlider = () => {
       offer: "Hurry up only few lefts!",
       buttonText1: "Shop Now",
       buttonText2: "Explore Deals",
-      imgSrc: assets.header_playstation_image,
+      imgSrc: assets.console,
+
     },
     {
       id: 3,
@@ -26,7 +27,7 @@ const HeaderSlider = () => {
       offer: "Exclusive Deal 40% Off",
       buttonText1: "Order Now",
       buttonText2: "Learn More",
-      imgSrc: assets.header_macbook_image,
+      imgSrc: assets.brain,
     },
   ];
 
@@ -54,20 +55,20 @@ const HeaderSlider = () => {
         {sliderData.map((slide, index) => (
           <div
             key={slide.id}
-            className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#E6E9F2] py-8 md:px-14 px-5 mt-6 rounded-xl min-w-full"
+            className="flex flex-col-reverse md:flex-row items-center justify-between bg-gradient-to-br from-bg-secondary via-bg-tertiary to-bg-card py-8 md:px-14 px-5 mt-6 rounded-xl min-w-full border border-neon-blue/20"
           >
             <div className="md:pl-8 mt-10 md:mt-0">
               <p className="md:text-base text-orange-600 pb-1">{slide.offer}</p>
               <h1 className="max-w-lg md:text-[40px] md:leading-[48px] text-2xl font-semibold">
                 {slide.title}
               </h1>
-              <div className="flex items-center mt-4 md:mt-6 ">
-                <button className="md:px-10 px-7 md:py-2.5 py-2 bg-gradient-to-r from-neon-orange to-orange-500 text-bg-primary hover:from-orange-500 hover:to-neon-orange transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,149,0,0.5)] rounded-full font-medium tracking-wide">
-                    Shop Now
+              <div className="flex items-center mt-4 md:mt-6 gap-4">
+                <button className="md:px-8 px-6 md:py-3 py-2.5 bg-gradient-to-r from-neon-orange to-orange-500 text-bg-primary hover:from-orange-500 hover:to-neon-orange transition-all duration-300 hover:shadow-[0_0_25px_rgba(255,149,0,0.6)] active:scale-95 hover:scale-105 rounded-full font-medium tracking-wide shadow-lg">
+                    {slide.buttonText1}
                 </button>
-                <button className="group flex items-center gap-2 px-6 py-2.5 font-medium border-2 border-neon-blue text-neon-blue hover:bg-gradient-to-r hover:from-neon-blue hover:to-sky-400 hover:text-bg-primary transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] rounded-full tracking-wide">
+                <button className="group flex items-center gap-2 md:px-8 px-6 md:py-3 py-2.5 font-medium border-2 border-neon-blue text-neon-blue hover:bg-gradient-to-r hover:from-neon-blue hover:to-sky-400 hover:text-bg-primary transition-all duration-300 hover:shadow-[0_0_25px_rgba(0,212,255,0.6)] active:scale-95 hover:scale-105 rounded-full tracking-wide shadow-lg">
                   {slide.buttonText2}
-                  <Image className="group-hover:translate-x-1 transition" src={assets.arrow_icon} alt="arrow_icon" />
+                  <Image className="group-hover:translate-x-1 transition-transform duration-300" src={assets.arrow_icon} alt="arrow_icon" />
                 </button>
               </div>
             </div>
@@ -87,8 +88,8 @@ const HeaderSlider = () => {
           <div
             key={index}
             onClick={() => handleSlideChange(index)}
-            className={`h-2 w-2 rounded-full cursor-pointer ${
-              currentSlide === index ? "bg-orange-600" : "bg-gray-500/30"
+            className={`h-2 w-2 rounded-full cursor-pointer transition-all duration-300 ${
+              currentSlide === index ? "bg-orange-600 scale-125" : "bg-gray-500/30 hover:bg-gray-500/50"
             }`}
           ></div>
         ))}

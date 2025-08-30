@@ -27,7 +27,20 @@ export const AppContextProvider = (props) => {
     const [cartItems, setCartItems] = useState({})
 
     const fetchProductData = async () => {
-        setProducts(productsDummyData)
+        try {
+            const { data} = await  axios.get('/api/product/list')
+            if (data.success) {
+                setProducts(data.products)
+            }else{
+                toast.error(data.message)
+            }
+            // await connectDB()
+            // const products = await Product.find({ userId })
+            // return NextResponse.json({ success: true, products }, { status: 200 });
+        } catch (error) {
+            toast.error(error.message)
+            // return NextResponse.json({ success: false, message: 'Internal server error' }, { status: 500 });
+        }
     }
 
     const fetchUserData = async () => {

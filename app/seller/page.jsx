@@ -126,12 +126,41 @@ const AddProduct = () => {
               defaultValue={category}
             >
               <option value="Earphone">Earphone</option>
-              <option value="Headphone">Headphone</option>
-              <option value="Watch">Watch</option>
-              <option value="Smartphone">Smartphone</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Camera</option>
+              <option value="Prebuilt PC">Prebuilt PC</option>
+              <option value="Air Cooler">Air Cooler</option>
+              <option value="Cabinet">Cabinet</option>
+              <option value="Cabinet Fans">Cabinet Fans</option>
+              <option value="Cables">Cables</option>
+              <option value="Converters / Adapters">Converters / Adapters</option>
+              <option value="Game Controllers">Game Controllers</option>
+              <option value="Gaming Chair">Gaming Chair</option>
+              <option value="Graphics Card">Graphics Card</option>
+              <option value="HDD">HDD</option>
+              <option value="Headphones">Headphones</option>
+              <option value="Keyboard">Keyboard</option>
+              <option value="Liquid Cooler">Liquid Cooler</option>
+              <option value="Microphone">Microphone</option>
+              <option value="Monitor">Monitor</option>
+              <option value="Motherboard">Motherboard</option>
+              <option value="Mouse">Mouse</option>
+              <option value="Mouse Pads">Mouse Pads</option>
+              <option value="Power Supply">Power Supply</option>
+              <option value="Processor">Processor</option>
+              <option value="RAM">RAM</option>
+              <option value="SSD">SSD</option>
+              <option value="UPS">UPS</option>
+              <option value="Powerbanks">Powerbanks</option>
+              <option value="Laptop Adjustable Stand">Laptop Adjustable Stand</option>
+              <option value="Speakers">Speakers</option>
+              <option value="Virtual Reality (VR)">Virtual Reality (VR)</option>
               <option value="Accessories">Accessories</option>
+              <option value="Audio Mixing Solution">Audio Mixing Solution</option>
+              <option value="Webcam">Webcam</option>
+              <option value="Capture Card">Capture Card</option>
+              <option value="Stream Deck">Stream Deck</option>
+              <option value="Prompter">Prompter</option>
+              <option value="Thermal Paste">Thermal Paste</option>
+              <option value="Selfie Stick">Selfie Stick</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">
