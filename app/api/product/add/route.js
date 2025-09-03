@@ -29,6 +29,8 @@ export async function POST(request) {
 
         const price = formData.get('price');
         const category = formData.get('category');
+        const brand = formData.get('brand');
+        const stock = formData.get('stock');
         const files = formData.getAll('image');
 
         if (!files || files.length === 0) {
@@ -65,6 +67,8 @@ export async function POST(request) {
             price: Number(price),
             offerPrice: Number(offerPrice),
             category,
+            brand,
+            stock: Number(stock),
             image,
             date: Date.now(),
         })

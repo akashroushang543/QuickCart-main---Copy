@@ -16,6 +16,8 @@ const AddProduct = () => {
   const [category, setCategory] = useState('Earphone');
   const [price, setPrice] = useState('');
   const [offerPrice, setOfferPrice] = useState('');
+  const [brand, setBrand] = useState('');
+  const [stock, setStock] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,6 +28,8 @@ const AddProduct = () => {
     formData.append('price', price);
     formData.append('offerPrice', offerPrice);
     formData.append('category', category);
+    formData.append('brand', brand);
+    formData.append('stock', stock);
 
     for (let i =0; i<files.length; i++) {
       formData.append('image', files[i]);
@@ -45,6 +49,8 @@ const AddProduct = () => {
         setPrice('');
         setOfferPrice('');
         setCategory('Earphone');
+        setBrand('');
+        setStock('');
         setFiles([]);
       } else {
         toast.error(data.message)
@@ -53,7 +59,6 @@ const AddProduct = () => {
       toast.error(error.message)
     }
    
-
   };
 
   return (
@@ -188,6 +193,37 @@ const AddProduct = () => {
               className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 bg-bg-secondary text-text-primary placeholder:text-text-muted"
               onChange={(e) => setOfferPrice(e.target.value)}
               value={offerPrice}
+              required
+            />
+          </div>
+        </div>
+        <div className="flex items-center gap-5 flex-wrap">
+          <div className="flex flex-col gap-1 w-32">
+            <label className="text-base font-medium text-text-secondary" htmlFor="brand">
+              Brand
+            </label>
+            <input
+              id="brand"
+              type="text"
+              placeholder="Brand name"
+              className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 bg-bg-secondary text-text-primary placeholder:text-text-muted"
+              onChange={(e) => setBrand(e.target.value)}
+              value={brand}
+              required
+            />
+          </div>
+          <div className="flex flex-col gap-1 w-32">
+            <label className="text-base font-medium text-text-secondary" htmlFor="stock">
+              Stock
+            </label>
+            <input
+              id="stock"
+              type="number"
+              placeholder="0"
+              min="0"
+              className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 bg-bg-secondary text-text-primary placeholder:text-text-muted"
+              onChange={(e) => setStock(e.target.value)}
+              value={stock}
               required
             />
           </div>

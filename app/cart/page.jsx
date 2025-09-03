@@ -25,16 +25,16 @@ const Cart = () => {
             <table className="min-w-full table-auto">
               <thead className="text-left">
                 <tr>
-                  <th className="text-nowrap pb-6 md:px-4 px-1 text-text-secondary font-medium">
+                  <th className="text-nowrap pb-6 md:px-4 px-1 text-neon-blue font-medium">
                     Product Details
                   </th>
-                  <th className="pb-6 md:px-4 px-1 text-text-secondary font-medium">
+                  <th className="pb-6 md:px-4 px-1 text-neon-blue font-medium">
                     Price
                   </th>
-                  <th className="pb-6 md:px-4 px-1 text-text-secondary font-medium">
+                  <th className="pb-6 md:px-4 px-1 text-neon-blue font-medium">
                     Quantity
                   </th>
-                  <th className="pb-6 md:px-4 px-1 text-text-secondary font-medium">
+                  <th className="pb-6 md:px-4 px-1 text-neon-blue font-medium">
                     Subtotal
                   </th>
                 </tr>
