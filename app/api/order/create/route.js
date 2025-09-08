@@ -1,4 +1,8 @@
+import { NextResponse } from 'next/server';
+import { getAuth } from '@clerk/nextjs/server';
 import { inngest } from "@/config/inngest";
+import Product from '@/models/product';
+import User from '@/models/User';
 
 
 
@@ -10,10 +14,11 @@ export async function POST(request) {
             return NextResponse.json({ success: false, message: 'Address or items are required' });
             
         }
-        //caluculate amount using items
+        //calculate amount using items
         const amount = await items.reduce(async (acc, item) => {
             const product = await Product.findById(item.product);
-            return acc + product.price * item.quantity;
+            return await acc + product.offerPrice * item.quantity;
+            
         }, 0);
 
         await inngest.send({
@@ -22,14 +27,14 @@ export async function POST(request) {
                 userId,
                 items,
                 address,
-                amount: amount  + Math.floor(amount * 0.2),
+                amount: amount + Math.floor(amount * 0.02),
                 date: Date.now(),
             }
         })
 
         //clear user cart
         const user = await User.findById(userId);
-        user.cartItems = [];
+        user.cartItems = {};
         await user.save();
 
         return NextResponse.json({ success: true, message: 'Order Placed successfully' });

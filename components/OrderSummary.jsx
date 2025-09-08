@@ -2,10 +2,11 @@ import { addressDummyData } from "@/assets/assets";
 import { useAppContext } from "@/context/AppContext";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const OrderSummary = () => {
 
-  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems} = useAppContext()
+  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems, setCartItems } = useAppContext()
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -38,7 +39,41 @@ const OrderSummary = () => {
   };
 
   const createOrder = async () => {
-    router.push('/order-placed')
+    try{
+      if(!selectedAddress){
+        toast.error('Please select an address')
+        return
+      }
+      let cartItemsArray = Object.keys(cartItems).map((key) => {
+        return {
+          product: key,
+          quantity: cartItems[key],
+        }
+      })
+      cartItemsArray = cartItemsArray.filter(item => item.quantity > 0)
+      if (cartItemsArray.length === 0) {
+        toast.error('Please add items to cart')
+      
+      }
+      const token = await getToken()
+      const { data } = await axios.post('/api/order/create', {
+        items: cartItemsArray,
+        address: selectedAddress._id,
+      },{
+        headers: {Authorization: `Bearer ${token}`}
+      })
+      if (data.success){
+        toast.success(data.message)
+        setCartItems({})
+        router.push('/order-placed')
+
+      }else{
+        toast.error(data.message)
+      }
+    }catch(error){
+      toast.error(error.message)
+
+    }
   }
 
   useEffect(() => {
@@ -110,6 +145,29 @@ const OrderSummary = () => {
             <button className="bg-gradient-to-r from-neon-orange to-orange-500 text-bg-primary px-9 py-2 hover:from-orange-500 hover:to-neon-orange transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,149,0,0.5)] rounded font-medium tracking-wide">
               Apply
             </button>
+          </div>
+        </div>
+        
+        <div className="border-t border-gray-500/30 pt-4 space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Subtotal ({getCartCount()} items)</span>
+            <span className="text-text-primary">{currency}{getCartAmount()}</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Discount</span>
+            <span className="text-green-400">-{currency}0</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Shipping</span>
+            <span className="text-text-primary">{currency}50</span>
+          </div>
+          <div className="flex justify-between text-sm">
+            <span className="text-text-secondary">Tax (2%)</span>
+            <span className="text-text-primary">{currency}{Math.round(getCartAmount() * 0.02)}</span>
+          </div>
+          <div className="flex justify-between text-lg font-medium border-t border-gray-500/30 pt-2">
+            <span className="text-text-primary">Total</span>
+            <span className="text-text-primary">{currency}{Math.round(getCartAmount() * 1.02 + 50)}</span>
           </div>
         </div>
         

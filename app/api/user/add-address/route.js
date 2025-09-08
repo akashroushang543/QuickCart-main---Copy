@@ -13,7 +13,7 @@ export async function POST(request) {
         const dbAddress = {
             userId,
             fullName: address.fullName,
-            PhoneNumber: address.phoneNumber, // Map phoneNumber to PhoneNumber
+            phoneNumber: address.phoneNumber, // Map phoneNumber to PhoneNumber
             pincode: address.pincode,
             area: address.area,
             city: address.city,

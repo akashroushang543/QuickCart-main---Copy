@@ -1,7 +1,7 @@
 import { Inngest } from "inngest";
 import connectDB from "./db";
 import User from "@/models/User";
-
+import Order from "@/models/Order";
 
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "RRJ_Traders_Next" });
@@ -59,7 +59,6 @@ export const syncUserDeletion = inngest.createFunction(
 //INNGEST FUNCTION TO CREATE ORDER IN DATABASE
 export const createUserOrder = inngest.createFunction({
     id:'create-user-order',
-    event:'user/order.created',
     batchEvent:{
         maxSize:5,
         timeout:'5s',

@@ -18,9 +18,9 @@ export async function GET(request) {
         if (!user) {
             const newUser = new User({
                 _id: userId,
-                name: "",
-                email: "",
-                imageUrl: "",
+                name: "User",
+                email: "user@example.com",
+                imageUrl: "https://via.placeholder.com/150",
                 cartItems: {}
             });
             await newUser.save();
