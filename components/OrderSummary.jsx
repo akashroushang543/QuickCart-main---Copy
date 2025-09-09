@@ -6,10 +6,11 @@ import toast from "react-hot-toast";
 
 const OrderSummary = () => {
 
-  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems, setCartItems } = useAppContext()
+  const { currency, router, getCartCount, getCartAmount, getToken, user, cartItems, setCartItems, products } = useAppContext()
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
+  const [promoCode, setPromoCode] = useState('');
+  const [promoDiscount, setPromoDiscount] = useState(0);
   const [userAddresses, setUserAddresses] = useState([]);
 
   const fetchUserAddresses = async () => {
@@ -38,6 +39,44 @@ const OrderSummary = () => {
     setIsDropdownOpen(false);
   };
 
+  const calculateProductDiscount = () => {
+    let totalDiscount = 0;
+    for (const itemId in cartItems) {
+      const product = products.find(p => p._id === itemId);
+      if (product && product.price > product.offerPrice) {
+        const discountPerItem = product.price - product.offerPrice;
+        totalDiscount += discountPerItem * cartItems[itemId];
+      }
+    }
+    return Math.floor(totalDiscount * 100) / 100;
+  };
+
+  const applyPromoCode = async () => {
+    if (!promoCode.trim()) {
+      toast.error('Please enter a promo code');
+      return;
+    }
+    
+    try {
+      const token = await getToken();
+      const { data } = await axios.post('/api/promo/validate', {
+        code: promoCode,
+        amount: getCartAmount()
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      
+      if (data.success) {
+        setPromoDiscount(data.discount);
+        toast.success(`Promo code applied! ${data.discount}% discount`);
+      } else {
+        toast.error(data.message || 'Invalid promo code');
+      }
+    } catch (error) {
+      toast.error('Failed to apply promo code');
+    }
+  };
+
   const createOrder = async () => {
     try{
       if(!selectedAddress){
@@ -59,12 +98,16 @@ const OrderSummary = () => {
       const { data } = await axios.post('/api/order/create', {
         items: cartItemsArray,
         address: selectedAddress._id,
+        promoCode: promoCode,
+        promoDiscount: promoDiscount
       },{
         headers: {Authorization: `Bearer ${token}`}
       })
       if (data.success){
         toast.success(data.message)
         setCartItems({})
+        setPromoCode('')
+        setPromoDiscount(0)
         router.push('/order-placed')
 
       }else{
@@ -140,9 +183,13 @@ const OrderSummary = () => {
             <input
               type="text"
               placeholder="Enter promo code"
+              value={promoCode}
+              onChange={(e) => setPromoCode(e.target.value)}
               className="flex-grow w-full outline-none p-2.5 text-text-primary bg-bg-secondary border border-gray-500/30 placeholder:text-text-muted"
             />
-            <button className="bg-gradient-to-r from-neon-orange to-orange-500 text-bg-primary px-9 py-2 hover:from-orange-500 hover:to-neon-orange transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,149,0,0.5)] rounded font-medium tracking-wide">
+            <button 
+              onClick={applyPromoCode}
+              className="bg-gradient-to-r from-neon-orange to-orange-500 text-bg-primary px-9 py-2 hover:from-orange-500 hover:to-neon-orange transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,149,0,0.5)] rounded font-medium tracking-wide">
               Apply
             </button>
           </div>
@@ -155,7 +202,7 @@ const OrderSummary = () => {
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-text-secondary">Discount</span>
-            <span className="text-green-400">-{currency}0</span>
+            <span className="text-green-400">-{currency}{((calculateProductDiscount() + (getCartAmount() * promoDiscount / 100)).toFixed(2))}</span>
           </div>
           <div className="flex justify-between text-sm">
             <span className="text-text-secondary">Shipping</span>
@@ -167,7 +214,7 @@ const OrderSummary = () => {
           </div>
           <div className="flex justify-between text-lg font-medium border-t border-gray-500/30 pt-2">
             <span className="text-text-primary">Total</span>
-            <span className="text-text-primary">{currency}{Math.round(getCartAmount() * 1.02 + 50)}</span>
+            <span className="text-text-primary">{currency}{Math.round(getCartAmount() * 1.02 + 50 - calculateProductDiscount() - (getCartAmount() * promoDiscount / 100))}</span>
           </div>
         </div>
         

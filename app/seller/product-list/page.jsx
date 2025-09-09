@@ -38,7 +38,6 @@ const ProductList = () => {
     if (user) {
       fetchSellerProduct();
     }
-    fetchSellerProduct();
   }, [user])
 
   return (
