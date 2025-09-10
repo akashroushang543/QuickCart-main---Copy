@@ -458,7 +458,16 @@ import console from "./console.gif";
 import header_playstation_image from "./header_playstation_image.png";
 import header_macbook_image from "./header_macbook_image.png";
 import headban from "./headban.gif"
+import earphone from "./earphone.gif"
 import brain from "./brain.gif"
+import pc from "./pc.gif"
+import cabinet from "./cabinet.gif"
+import cabinet_fan from "./cabinet_fan.gif"
+import air_cooler from "./air_cooler.gif"
+import cable from "./cable.gif"
+import mouse from "./mouse.gif"
+import adapter from "./adapter.gif"
+import game_controller from "./game_controller.gif"
 import macbook_image from "./macbook_image.png";
 import bose_headphone_image from "./bose_headphone_image.png";
 import apple_earphone_image from "./apple_earphone_image.png";
@@ -501,6 +510,14 @@ export const assets = {
   product_list_icon,
   menu_icon,
   arrow_icon,
+  pc,
+  mouse,
+  cabinet,
+  cabinet_fan,
+  air_cooler,
+  cable,
+  adapter,
+  game_controller,
   increase_arrow,
   decrease_arrow,
   arrow_right_icon_colored,
@@ -514,6 +531,7 @@ export const assets = {
   header_playstation_image,
   header_macbook_image,
   headban,
+  earphone,
   brain,
   macbook_image,
   bose_headphone_image,

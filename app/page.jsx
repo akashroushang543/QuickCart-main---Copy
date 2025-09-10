@@ -5,6 +5,7 @@ import HomeProducts from "@/components/HomeProducts";
 import Banner from "@/components/Banner";
 import NewsLetter from "@/components/NewsLetter";
 import FeaturedProduct from "@/components/FeaturedProduct";
+import CategoryShowcase from "@/components/home/CategoryShowcase";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,8 @@ const Home = () => {
           <div className="absolute -top-4 -left-4 w-32 h-32 bg-neon-blue/10 rounded-full blur-2xl"></div>
           <HeaderSlider />
         </div>
+        
+        <CategoryShowcase />
         
         <div className="relative">
           <div className="absolute -top-8 -right-8 w-48 h-48 bg-neon-purple/10 rounded-full blur-3xl"></div>
