@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import { useAppContext } from "@/context/AppContext";
+import SectionHeading from "./shared/SectionHeading";
 
 const HomeProducts = () => {
 
@@ -8,18 +9,11 @@ const HomeProducts = () => {
 
   return (
     <div className="flex flex-col items-center py-16">
-      {/* Neon section title with animation */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
-          <span className="inline-block animate-text-glow bg-gradient-neon bg-clip-text text-transparent">
-            Popular Products
-          </span>
-        </h2>
-        <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-          Discover our curated collection of cutting-edge tech products
-        </p>
-        <div className="mt-4 h-1 w-32 mx-auto bg-gradient-neon rounded-full animate-neon-pulse"></div>
-      </div>
+      {/* Unified section heading */}
+      <SectionHeading 
+        title="Popular Products" 
+        subtitle="Discover our curated collection of cutting-edge tech products"
+      />
 
       {/* Enhanced product grid with neon styling */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-4 md:gap-8 mt-8 w-full">

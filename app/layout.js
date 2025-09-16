@@ -1,10 +1,20 @@
-import { Outfit } from "next/font/google";
+import { Poppins, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { AppContextProvider } from "@/context/AppContext";
 import { Toaster } from "react-hot-toast";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const outfit = Outfit({ subsets: ['latin'], weight: ["300", "400", "500"] })
+const poppins = Poppins({ 
+  subsets: ['latin'], 
+  weight: ["500", "600", "700"],
+  variable: '--font-poppins'
+});
+
+const openSans = Open_Sans({ 
+  subsets: ['latin'], 
+  weight: ["400", "500", "600"],
+  variable: '--font-open-sans'
+});
 
 export const metadata = {
   title: "RRJ Traders",
@@ -15,7 +25,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${outfit.className} antialiased bg-bg-primary text-text-primary min-h-screen`} >
+        <body className={`${poppins.variable} ${openSans.variable} ${openSans.className} antialiased bg-bg-primary text-text-primary min-h-screen`} >
           <Toaster 
             toastOptions={{
               style: {

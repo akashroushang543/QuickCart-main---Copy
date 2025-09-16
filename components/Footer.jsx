@@ -103,6 +103,20 @@ const Footer = () => {
             <div className="absolute -bottom-2 left-0 w-8 h-0.5 bg-gradient-neon rounded-full"></div>
           </h2>
           <p className="text-sm text-text-secondary/80 mb-4">Stay updated with our latest products and offers.</p>
+        <div className="flex flex-row items-center md:flex-col md:items-stretch md:gap-2 bg-bg-tertiary/50 border border-neon-blue/20 rounded-lg p-1 focus-within:border-neon-blue focus-within:shadow-neon-blue transition-all duration-300">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full flex-grow px-4 py-2 bg-transparent text-text-primary placeholder-text-secondary/50 focus:outline-none"
+          />
+          <button className="flex-shrink-0 md:w-full px-4 py-1.5 bg-neon-blue text-bg-primary rounded-md text-sm font-medium hover:bg-neon-purple transition-all duration-300 hover:shadow-neon-purple">
+            Subscribe
+          </button>
+        </div>
+      </div>
+    </div>
+
+          {/* <p className="text-sm text-text-secondary/80 mb-4">Stay updated with our latest products and offers.</p>
           <div className="relative">
             <input 
               type="email" 
@@ -114,12 +128,24 @@ const Footer = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Copyright with neon styling */}
       <div className="relative bg-bg-primary/50 backdrop-blur-sm py-6 border-t border-neon-blue/10">
+      <p className="text-center text-sm md:text-base flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+        <span className="text-gray-400">Copyright 2025 ©</span>
+        <span className="font-bold text-lg bg-gradient-to-r from-purple-400 to-sky-500 bg-clip-text text-transparent">
+          {" "}
+          RRJ Traders{" "}
+        </span>
+        <span className="hidden md:inline text-gray-600">|</span>
+        <span className="text-gray-400">All Rights Reserved</span>
+      </p>
+    </div>
+
+      {/* <div className="relative bg-bg-primary/50 backdrop-blur-sm py-6 border-t border-neon-blue/10">
         <p className="text-center text-sm text-text-secondary/70">
-          <span className="text-neon-blue animate-text-glow">Copyright 2025 ©</span>
+          <span className="text-neon-blue">Copyright 2025 ©</span>
           <span className="text-neon-purple"> RRJ Traders </span>
           <span className="text-neon-pink"> All Rights Reserved</span>
         </p>
@@ -128,7 +154,7 @@ const Footer = () => {
           <div className="w-2 h-2 bg-neon-purple rounded-full animate-neon-pulse" style={{ animationDelay: '0.33s' }}></div>
           <div className="w-2 h-2 bg-neon-pink rounded-full animate-neon-pulse" style={{ animationDelay: '0.66s' }}></div>
         </div>
-      </div>
+      </div> */}
     </footer>
   );
 };

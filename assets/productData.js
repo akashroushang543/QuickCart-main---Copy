@@ -54,7 +54,7 @@ export const products = [
     name: "MacBook Pro 16",
     description: "M2 Pro Chip, 16GB RAM, 512GB SSD",
     rating: 4.5,
-    price: "₹2,07,499"
+    price: "₹2,07,499",
     imgSrc: assets.macbook_image,
   },
   {
