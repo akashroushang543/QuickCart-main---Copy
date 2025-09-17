@@ -28,19 +28,19 @@ const Navbar = () => {
       {/* Navigation links with neon hover effects */}
       <div className="flex items-center gap-6 lg:gap-10 max-md:hidden">
         <Link href="/" className="relative text-text-primary hover:text-neon-blue transition-all duration-300 group">
-          <span className="relative z-10">Home</span>
+          <span className="relative z-10 text-lg md:text-xl lg:text-2xl font-bold">Home</span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
         </Link>
         <Link href="/all-products" className="relative text-text-primary hover:text-neon-blue transition-all duration-300 group">
-          <span className="relative z-10">Shop</span>
+          <span className="relative z-10 text-lg md:text-xl lg:text-2xl font-bold">Shop</span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
         </Link>
         <Link href="/" className="relative text-text-primary hover:text-neon-blue transition-all duration-300 group">
-          <span className="relative z-10">About Us</span>
+          <span className="relative z-10 text-lg md:text-xl lg:text-2xl font-bold">About Us</span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
         </Link>
         <Link href="/" className="relative text-text-primary hover:text-neon-blue transition-all duration-300 group">
-          <span className="relative z-10">Contact</span>
+          <span className="relative z-10 text-lg md:text-xl lg:text-2xl font-bold">Contact</span>
           <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
         </Link>
 
@@ -76,7 +76,7 @@ const Navbar = () => {
         
         : <button onClick={openSignIn} className="flex items-center gap-2 text-text-secondary hover:text-neon-blue transition-all duration-300 group">
           <Image className="w-5 h-5" src={assets.user_icon} alt="user icon" />
-          <span className="relative">
+          <span className="relative text-lg md:text-xl lg:text-2xl font-bold">
             Account
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon-blue transition-all duration-300 group-hover:w-full"></span>
           </span>

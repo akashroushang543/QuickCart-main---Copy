@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Coiny');
+@import url('https://fonts.cdnfonts.com/css/azonix');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -12,7 +13,7 @@
   
   /* Neon colors */
   --neon-blue: #00d4ff;
-  --neon-purple: #7b2cbf;
+  --neon-purple: #fca625;
   --neon-pink: #ff006e;
   --neon-green: #39ff14;
   --neon-orange: #ff9500;
@@ -24,7 +25,7 @@
   
   /* Glow effects */
   --glow-blue: 0 0 20px rgba(0, 212, 255, 0.5);
-  --glow-purple: 0 0 20px rgba(123, 44, 191, 0.5);
+  --glow-purple: 0 0 20px rgba(231, 209, 85, 0.765);
   --glow-pink: 0 0 20px rgba(255, 0, 110, 0.5);
 }
 
@@ -131,6 +132,10 @@ body::before {
 .section-bounce {
   animation: coiny-bounce 3s ease-in-out infinite alternate;
   display: inline-block;
+}
+
+.font-azonix {
+  font-family: 'Azonix', sans-serif;
 }
 
 /* Custom scrollbar for dark theme */
